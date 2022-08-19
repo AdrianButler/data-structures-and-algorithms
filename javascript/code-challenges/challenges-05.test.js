@@ -144,7 +144,7 @@ const reversedString = (str) => {
 
   return stringArray.reduce((lastValue, newValue, index, array) =>
   {
-    return lastValue + str.at(array.length - index - 1);
+    return lastValue + str.charAt(array.length - index - 1);
   }, '');
 };
 

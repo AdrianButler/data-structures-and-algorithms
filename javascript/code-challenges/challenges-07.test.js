@@ -154,8 +154,8 @@ const listFoods = (recipe) =>
 
   recipe.ingredients.forEach((value) =>
   {
-    let index = value.indexOf(" ", 2);
-    result.push(value);
+    let index = value.indexOf(" ", value.indexOf(" ") + 1);
+    result.push(value.substring(index + 1));
   });
   // Solution code here...
   return result;

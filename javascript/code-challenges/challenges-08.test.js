@@ -118,14 +118,9 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) =>
 {
-  str = str.split(' ');
-  return str.filter((value) =>
-  {
-    return /[A-Z].*/.test(value);
-  });
+  let regex = /[A-Z][a-z]*/g;
 
-  console.log(str);
-  // console.log(/\b[A-Z].*?\b/.exec(str));
+  return str.match(regex) || [];
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -136,11 +131,11 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) =>
 {
-  return arr.filter((value) =>
-  {
-    return /[a-jA-J]/.test(value);
-  });
+  let regex = /^[A-J]/;
+
+  return arr.filter((value) => value.match(regex));
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal

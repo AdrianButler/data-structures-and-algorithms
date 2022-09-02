@@ -178,19 +178,17 @@ let starWarsData = [{
 let findMaleAndFemale = (data) =>
 {
 
-  return data.reduce((previous, current) =>
+  const maleAndFemales = [];
+  data.forEach((value) =>
   {
     // return previous + current.name;
-    if (current.gender === 'male' || current.gender === 'female')
+    if (value.gender === 'male' || value.gender === 'female')
     {
-      console.log(previous);
-
-      let newString = previous + current.name;
-      console.log(newString, "new string");
-
-      return newString;
+      maleAndFemales.push(value.name);
     }
   }, '');
+
+  return maleAndFemales.join(' and ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -202,6 +200,18 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 let findShortest = (data) =>
 {
 
+  return data.reduce((previous, current) =>
+  {
+    if (previous.height > current.height)
+    {
+      return previous;
+    }
+    else
+    {
+      return current;
+    }
+
+  },{name: '', height: '1'}).name;
 };
 
 /* ------------------------------------------------------------------------------------------------

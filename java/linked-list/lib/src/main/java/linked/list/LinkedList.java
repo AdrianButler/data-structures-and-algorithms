@@ -3,17 +3,48 @@
  */
 package linked.list;
 
-public class LinkedList
+public class LinkedList<T>
 {
-  private Node head;
+  private Node<T> head;
 
-  public Node getHead() {
+  public Node<T> getHead()
+  {
     return head;
   }
 
-  public void insert(int value)
+  public void append(T value)
   {
-    Node newNode = new Node(value);
+    Node<T> current = head;
+
+    if (current == null)
+    {
+      head = new Node<>(value);
+      return;
+    }
+
+    while (current.getNext() != null)
+    {
+      current = current.getNext();
+    }
+
+    current.setNext(new Node<>(value));
+
+
+  }
+
+  public void insertBefore(T value, T newValue)
+  {
+
+  }
+
+  public void insertAfter(T value, T newValue)
+  {
+
+  }
+
+  public void insert(T value)
+  {
+    Node<T> newNode = new Node<>(value);
     newNode.setNext(head);
 
     head = newNode;
@@ -21,11 +52,11 @@ public class LinkedList
 
   public boolean includes(int value)
   {
-    Node current = head;
+    Node<T> current = head;
 
     while (current != null)
     {
-      if (current.getValue() == value)
+      if (current.getValue().equals(value))
       {
         return true;
       }
@@ -40,7 +71,7 @@ public class LinkedList
   {
     String values = "";
 
-    Node current = head;
+    Node<T> current = head;
 
     while (current != null)
     {

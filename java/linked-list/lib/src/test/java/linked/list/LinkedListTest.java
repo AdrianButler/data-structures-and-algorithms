@@ -4,79 +4,140 @@
 package linked.list;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class LinkedListTest {
-    @Test void canInstantiateLinkedList()
-    {
-      LinkedList linkedList = new LinkedList();
+class LinkedListTest
+{
+  @Test
+  void canAppendLinkedList()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
 
-      assertEquals("NULL", linkedList.toString());
-    }
+    linkedList.insert(3);
+    linkedList.append(10);
 
-    @Test void canInsertIntoLinkedList()
-    {
-      LinkedList linkedList = new LinkedList();
 
-      linkedList.insert(5);
+    assertTrue(linkedList.getHead().getValue() != 10);
 
-      assertTrue(linkedList.toString().contains("5"));
-    }
+    LinkedList<Integer> linkedList2 = new LinkedList<>();
 
-    @Test void headPointsToFirst()
-    {
-      LinkedList linkedList = new LinkedList();
+    linkedList2.append(52);
 
-      linkedList.insert(3);
+    assertEquals(52, linkedList2.getHead().getValue());
+  }
 
-      assertEquals(3, linkedList.getHead().getValue());
-    }
+  @Test
+  void canInsertBefore()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
 
-    @Test void canInsertMultipleNodes()
-    {
-      LinkedList linkedList = new LinkedList();
+    linkedList.insert(5);
+    linkedList.insert(3);
+    linkedList.insert(2); // 2 -> 3 -> 5
 
-      linkedList.insert(5);
-      linkedList.insert(2);
-      linkedList.insert(-1);
+    linkedList.insertBefore(3, 12);
 
-      assertTrue(linkedList.toString().contains("5"));
-      assertTrue(linkedList.toString().contains("2"));
-      assertTrue(linkedList.toString().contains("-1"));
-    }
+    String string = linkedList.toString();
+    String comparison = "{ 2 } -> { 12 } -> { 3 } -> { 5 } -> NULL";
 
-    @Test void includesReturnsTrue()
-    {
-      LinkedList linkedList = new LinkedList();
+    assertEquals(string, comparison);
+  }
 
-      linkedList.insert(10);
+  @Test
+  void insertAfter()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
 
-      assertTrue(linkedList.includes(10));
+    linkedList.insert(5);
+    linkedList.insert(10);
+    linkedList.insert(25); // 25 -> 10 -> 5
 
-    }
+    linkedList.insertAfter(10, 50);
 
-    @Test void includesReturnsFalse()
-    {
-      LinkedList linkedList = new LinkedList();
+    String string = linkedList.toString();
+    String comparison = "{ 25 } -> { 10 } -> { 50 } -> { 5 } -> NULL";
 
-      linkedList.insert(53);
+    assertEquals(string, comparison);
+  }
 
-      assertFalse(linkedList.includes(12));
-    }
+  @Test
+  void canInstantiateLinkedList()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
 
-    @Test void toStringReturnsFormattedText()
-    {
-      LinkedList linkedList = new LinkedList();
+    assertEquals("NULL", linkedList.toString());
+  }
 
-      linkedList.insert(12);
-      linkedList.insert(5);
-      linkedList.insert(3);
-      linkedList.insert(7);
-      linkedList.insert(9);
+  @Test
+  void canInsertIntoLinkedList()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
 
-      String shouldEqual = "{ 9 } -> { 7 } -> { 3 } -> { 5 } -> { 12 } -> NULL";
-      String s = linkedList.toString();
-      assertTrue(linkedList.toString().equals(shouldEqual));
-    }
+    linkedList.insert(5);
+
+    assertTrue(linkedList.toString().contains("5"));
+  }
+
+  @Test
+  void headPointsToFirst()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
+
+    linkedList.insert(3);
+
+    assertEquals(3, linkedList.getHead().getValue());
+  }
+
+  @Test
+  void canInsertMultipleNodes()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
+
+    linkedList.insert(5);
+    linkedList.insert(2);
+    linkedList.insert(-1);
+
+    assertTrue(linkedList.toString().contains("5"));
+    assertTrue(linkedList.toString().contains("2"));
+    assertTrue(linkedList.toString().contains("-1"));
+  }
+
+  @Test
+  void includesReturnsTrue()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
+
+    linkedList.insert(10);
+
+    assertTrue(linkedList.includes(10));
+
+  }
+
+  @Test
+  void includesReturnsFalse()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
+
+    linkedList.insert(53);
+
+    assertFalse(linkedList.includes(12));
+  }
+
+  @Test
+  void toStringReturnsFormattedText()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
+
+    linkedList.insert(12);
+    linkedList.insert(5);
+    linkedList.insert(3);
+    linkedList.insert(7);
+    linkedList.insert(9);
+
+    String shouldEqual = "{ 9 } -> { 7 } -> { 3 } -> { 5 } -> { 12 } -> NULL";
+    String s = linkedList.toString();
+    assertEquals(linkedList.toString(), shouldEqual);
+  }
 
 }

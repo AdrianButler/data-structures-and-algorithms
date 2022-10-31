@@ -34,12 +34,52 @@ public class LinkedList<T>
 
   public void insertBefore(T value, T newValue)
   {
+    Node<T> current = head;
+    Node<T> previousNode = current;
 
+    if (current == null)
+    {
+      return;
+    }
+
+    while (current.getValue() != value)
+    {
+      if (current.getNext() == null)
+      {
+        return;
+      }
+      previousNode = current;
+      current = current.getNext();
+    }
+
+    Node<T> insertedNode = new Node<>(newValue);
+
+    previousNode.setNext(insertedNode);
+    insertedNode.setNext(current);
   }
 
   public void insertAfter(T value, T newValue)
   {
+    Node<T> current = head;
 
+    if (current == null)
+    {
+      return;
+    }
+
+    while (current.getValue() != value)
+    {
+      if (current.getNext() == null)
+      {
+        return;
+      }
+      current = current.getNext();
+    }
+
+    Node<T> insertedNode = new Node<>(newValue);
+
+    insertedNode.setNext(current.getNext());
+    current.setNext(insertedNode);
   }
 
   public void insert(T value)

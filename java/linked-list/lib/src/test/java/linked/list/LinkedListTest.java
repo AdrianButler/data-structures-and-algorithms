@@ -58,7 +58,6 @@ class LinkedListTest
     String string = linkedList.toString();
     String comparison = "{ 25 } -> { 10 } -> { 50 } -> { 5 } -> NULL";
 
-
     assertEquals(string, comparison);
   }
 

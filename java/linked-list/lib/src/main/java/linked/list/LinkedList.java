@@ -12,6 +12,50 @@ public class LinkedList<T>
     return head;
   }
 
+  public T kthFromEnd(int k)
+  {
+    int counter = 0;
+
+    LinkedList<T> reversed = reverseLinkedList(this);
+    Node<T> current = reversed.getHead();
+
+    while (current != null)
+    {
+      if (counter == k)
+      {
+        return current.getValue();
+      }
+      counter++;
+      current = current.getNext();
+    }
+
+    return null;
+  }
+
+  public LinkedList<T> reverseLinkedList(LinkedList<T> linkedList)
+  {
+    Node<T> previous = null;
+    Node<T> current = linkedList.head;
+    Node<T> temp = current.getNext();
+
+    while (current != null)
+    {
+      current.setNext(previous);
+      previous = current;
+      current = temp;
+      temp = current.getNext();
+    }
+
+    linkedList.setHead(previous);
+
+    return linkedList;
+  }
+
+  public void setHead(Node<T> head)
+  {
+    this.head = head;
+  }
+
   public void append(T value)
   {
     Node<T> current = head;

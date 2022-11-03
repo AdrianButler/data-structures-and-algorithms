@@ -12,6 +12,32 @@ public class LinkedList<T>
     return head;
   }
 
+  public static <T> LinkedList<T> zipLists(Node<T> current1, Node<T> current2)
+  {
+    final Node<T> head = current1;
+
+    Node<T> temp1 = current1.getNext();
+    Node<T> temp2 = current2.getNext();
+    while (true)
+    {
+      current1.setNext(current2);
+      current1 = temp1;
+      current2.setNext(current1);
+
+      if (temp1 == null)
+      {
+        break;
+      }
+      temp1 = temp1.getNext();
+      current2 = temp2;
+      temp2 = current2.getNext(); // loop?
+    }
+
+    LinkedList<T> newLinkedList = new LinkedList<>();
+    newLinkedList.setHead(head);
+
+    return newLinkedList;
+  }
   public T kthFromEnd(int k)
   {
     int counter = 0;

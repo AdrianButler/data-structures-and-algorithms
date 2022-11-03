@@ -9,6 +9,47 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest
 {
+
+  @Test
+  void canZipLists()
+  {
+    LinkedList<Integer> linkedList1 = new LinkedList<>(); // 5 - 3 - 2
+    linkedList1.append(5);
+    linkedList1.append(3);
+    linkedList1.append(2);
+
+    LinkedList<Integer> linkedList2 = new LinkedList<>(); // 8 - 12 - 5
+    linkedList2.append(8);
+    linkedList2.append(12);
+    linkedList2.append(5);
+
+    String string = LinkedList.zipLists(linkedList1.getHead(), linkedList2.getHead()).toString();
+    String comparison = "{ 5 } -> { 8 } -> { 3 } -> { 12 } -> { 2 } -> { 5 } -> NULL";
+
+    assertEquals(string, comparison);
+
+    LinkedList<Integer> linkedList3 = new LinkedList<>(); // 5 - 3 - 2
+    linkedList3.append(5);
+    linkedList3.append(3);
+    linkedList3.append(2);
+    linkedList3.append(7);
+    linkedList3.append(9);
+    linkedList3.append(92);
+
+    LinkedList<Integer> linkedList4 = new LinkedList<>(); // 8 - 12 - 5
+    linkedList4.append(8);
+    linkedList4.append(12);
+    linkedList4.append(5);
+    linkedList4.append(76);
+    linkedList4.append(8754);
+    linkedList4.append(32);
+
+    string = LinkedList.zipLists(linkedList3.getHead(), linkedList4.getHead()).toString();
+
+    comparison = "{ 5 } -> { 8 } -> { 3 } -> { 12 } -> { 2 } -> { 5 } -> { 7 } -> { 76 } -> { 9 } -> { 8754 } -> { 92 } -> { 32 } -> NULL";
+
+    assertEquals(string, comparison);
+  }
   @Test
   void canAppendLinkedList()
   {

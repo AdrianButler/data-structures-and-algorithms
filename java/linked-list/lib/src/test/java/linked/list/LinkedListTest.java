@@ -9,6 +9,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest
 {
+  @Test
+  void testIsPalindrome()
+  {
+    LinkedList<Integer> linkedList = new LinkedList<>();
+    linkedList.append(2);
+    linkedList.append(3);
+    linkedList.append(3);
+    linkedList.append(2);
+
+    assertTrue(linkedList.isPalindrome());
+
+    LinkedList<Integer> linkedList2 = new LinkedList<>();
+    linkedList2.append(5);
+    linkedList2.append(1);
+    linkedList2.append(3);
+    linkedList2.append(2);
+
+    assertFalse(linkedList2.isPalindrome());
+  }
 
   @Test
   void canZipLists()
@@ -46,7 +65,8 @@ class LinkedListTest
 
     string = LinkedList.zipLists(linkedList3.getHead(), linkedList4.getHead()).toString();
 
-    comparison = "{ 5 } -> { 8 } -> { 3 } -> { 12 } -> { 2 } -> { 5 } -> { 7 } -> { 76 } -> { 9 } -> { 8754 } -> { 92 } -> { 32 } -> NULL";
+    comparison = "{ 5 } -> { 8 } -> { 3 } -> { 12 } -> { 2 } -> { 5 } -> { 7 } -> { 76 } -> { 9 } -> { 8754 } -> { 92" +
+      " } -> { 32 } -> NULL";
 
     assertEquals(string, comparison);
   }

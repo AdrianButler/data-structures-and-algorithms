@@ -12,6 +12,33 @@ public class LinkedList<T>
     return head;
   }
 
+  public boolean isPalindrome()
+  {
+    String string = "";
+    Node<T> current = head;
+
+    while (current != null)
+    {
+      string += current.getValue();
+      current = current.getNext();
+    }
+
+    String reversedString = reverseString(string);
+
+    return string.equals(reversedString);
+  }
+
+  private String reverseString(String string)
+  {
+    String newString = "";
+    for (int i = string.length(); i > 0; --i)
+    {
+      newString += string.charAt(i - 1);
+    }
+
+    return newString;
+  }
+
   public static <T> LinkedList<T> zipLists(Node<T> current1, Node<T> current2)
   {
     final Node<T> head = current1;

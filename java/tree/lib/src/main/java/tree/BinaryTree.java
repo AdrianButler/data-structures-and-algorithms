@@ -7,6 +7,20 @@ public class BinaryTree<T>
   private BinaryNode<T> root;
   private ArrayList<T> tempTraversalArray;
 
+public T findMax()
+  {
+    ArrayList<T> values = preOrderTraversal();
+    T maxValue = values.get(0);
+    for (T value : values)
+    {
+      if ((int) value > (int)maxValue)
+      {
+        maxValue = value;
+      }
+    }
+    return maxValue;
+  }
+
   public ArrayList<T> preOrderTraversal()
   {
     tempTraversalArray = new ArrayList<>();

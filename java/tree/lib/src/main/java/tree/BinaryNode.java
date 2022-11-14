@@ -6,6 +6,11 @@ public class BinaryNode<T>
   private BinaryNode<T> left;
   private BinaryNode<T> right;
 
+  public BinaryNode(T value)
+  {
+    this.value = value;
+  }
+
   public T getValue()
   {
     return value;

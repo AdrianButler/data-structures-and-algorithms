@@ -4,6 +4,9 @@
 package tree;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TreeTest
@@ -30,6 +33,36 @@ class TreeTest
   @Test public void testPostOrderTraversal()
   {
 
+  }
+
+  @Test
+  public void testFindMax()
+  {
+    BinaryTree<Integer> binaryTree = new BinaryTree<>();
+    binaryTree.setRoot(new BinaryNode<>(1));
+    binaryTree.getRoot().setLeft(new BinaryNode<>(2));
+    binaryTree.getRoot().setRight(new BinaryNode<>(3));
+    binaryTree.getRoot().getLeft().setLeft(new BinaryNode<>(4));
+    binaryTree.getRoot().getLeft().setRight(new BinaryNode<>(5));
+    binaryTree.getRoot().getRight().setLeft(new BinaryNode<>(6));
+    binaryTree.getRoot().getRight().setRight(new BinaryNode<>(7));
+
+    assertEquals(7, binaryTree.findMax());
+  }
+
+  @Test
+  public void testBreadthFirst()
+  {
+    BinaryTree<Integer> binaryTree = new BinaryTree<>();
+    binaryTree.setRoot(new BinaryNode<>(1));
+    binaryTree.getRoot().setLeft(new BinaryNode<>(2));
+    binaryTree.getRoot().setRight(new BinaryNode<>(3));
+    binaryTree.getRoot().getLeft().setLeft(new BinaryNode<>(4));
+    binaryTree.getRoot().getLeft().setRight(new BinaryNode<>(5));
+    binaryTree.getRoot().getRight().setLeft(new BinaryNode<>(6));
+    binaryTree.getRoot().getRight().setRight(new BinaryNode<>(7));
+
+    assertEquals(Arrays.stream(new Integer[]{1, 2, 3, 4, 5, 6, 7}).toList(), binaryTree.breadthFirst());
   }
 
 

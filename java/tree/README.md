@@ -19,3 +19,13 @@ Traverse the binary tree in any way (I will use pre-order) and as you traverse t
 ### Solution
 
 Inside of a while loop create a queue and then add each node to the queue while moving through the queue add each child to the queue until there are no more nodes left in the queue
+
+## K-ary Tree
+
+### White Board
+
+![Whiteboard](k-ary.png)
+
+### Solution
+
+Using any method traverse the tree and as you reach every value check for the values and replace them as necessary

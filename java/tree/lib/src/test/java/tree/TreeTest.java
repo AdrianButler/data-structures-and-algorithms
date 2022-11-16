@@ -4,6 +4,8 @@
 package tree;
 
 import org.junit.jupiter.api.Test;
+import tree.binary.BinaryNode;
+import tree.binary.BinaryTree;
 
 import java.util.Arrays;
 

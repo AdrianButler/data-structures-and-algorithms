@@ -1,3 +1,19 @@
+# Hashmap Repeated Word
+
+## Challenge
+
+
+
+## Whiteboard
+
+![Whiteboard for challenge](repeatedword.png)
+
+## Approach
+
+
+
+---------------------
+
 # Hashtable
 
 ## Challenge
